@@ -1,33 +1,71 @@
 :root {
     --accent: #38bdf8;
-    --bg: #030712;
-    --signal-color: rgba(56, 189, 248, 0.4);
+    --winter-grey: #475569;
+    --deep-bg: #030712;
+    --signal-glow: rgba(56, 189, 248, 0.3);
 }
 
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body, html { 
-    margin: 0; 
-    padding: 0; 
-    background-color: var(--bg); 
+    background-color: var(--deep-bg); 
     color: #f1f5f9; 
-    font-family: 'Inter', sans-serif; 
+    font-family: 'Inter', system-ui, -apple-system, sans-serif; 
     overflow: hidden; 
 }
 
-/* Background Electrical Signals */
+/* --- THE DYNAMIC BACKGROUND ENGINE --- */
+
+/* This creates the 'Electrical Signal' waves across the entire site */
 .signal-bg {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: linear-gradient(var(--signal-color) 1px, transparent 1px),
-                      linear-gradient(90deg, var(--signal-color) 1px, transparent 1px);
-    background-size: 50px 50px;
-    opacity: 0.1;
+    top: 0;
+    left: 0;
+    width: 200%; /* Extra width for seamless horizontal scroll */
+    height: 100%;
     z-index: -1;
+    background-image: 
+        /* Vertical Signal Lines */
+        linear-gradient(90deg, var(--signal-glow) 1px, transparent 1px),
+        /* Horizontal Signal Waves */
+        linear-gradient(0deg, var(--signal-glow) 1px, transparent 1px);
+    background-size: 80px 80px;
+    opacity: 0.15;
+    animation: waveMove 15s linear infinite;
 }
+
+/* Electrical "Pulses" that travel along the grid lines */
+.signal-bg::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--accent) 50%, 
+        transparent 100%);
+    background-size: 20% 100%;
+    background-repeat: no-repeat;
+    animation: electricalPulse 4s ease-in-out infinite;
+    opacity: 0.1;
+}
+
+@keyframes waveMove {
+    from { transform: translateX(0) translateY(0); }
+    to { transform: translateX(-80px) translateY(-80px); }
+}
+
+@keyframes electricalPulse {
+    from { background-position: -100% 0; }
+    to { background-position: 200% 0; }
+}
+
+/* --- SCROLLYTELLING ARCHITECTURE --- */
 
 .scroller {
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
 }
 
 .slide {
@@ -36,75 +74,74 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px;
-}
-
-.content { max-width: 900px; text-align: center; }
-
-.era { 
-    font-weight: 800; 
-    color: var(--accent); 
-    text-transform: uppercase; 
-    letter-spacing: 3px; 
-    border-bottom: 2px solid var(--accent);
-    padding-bottom: 5px;
-}
-
-h1 { font-size: 4rem; margin: 20px 0; font-weight: 900; }
-p { font-size: 1.25rem; line-height: 1.7; color: #94a3b8; margin-bottom: 20px; }
-
-/* Animation: Electrical Signal Line */
-.signal-line {
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    padding: 2rem;
     position: relative;
-    overflow: hidden;
-    margin-top: 40px;
-}
-.signal-line::after {
-    content: "";
-    position: absolute;
-    width: 50px;
-    height: 100%;
-    background: #fff;
-    box-shadow: 0 0 15px #fff;
-    animation: flow 2s linear infinite;
 }
 
-@keyframes flow {
-    from { left: -10%; }
-    to { left: 110%; }
+/* Fade content in as it centers in the viewport */
+.content {
+    max-width: 850px;
+    text-align: center;
+    background: rgba(3, 7, 18, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 3rem;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.5s ease-out;
 }
 
-/* Winter Slide Modification */
-.winter { background: #111827; }
-.frozen-signal { 
-    width: 100px; height: 2px; background: #64748b; margin: 20px auto; 
-    box-shadow: 0 0 10px #475569;
+/* --- SECTION-SPECIFIC STATE CHANGES --- */
+
+/* During the AI Winter, the background "freezes" */
+.winter {
+    background: radial-gradient(circle at center, rgba(71, 85, 105, 0.2) 0%, transparent 70%);
+}
+.winter .era { color: var(--winter-grey); border-color: var(--winter-grey); }
+
+/* During the Neural/Deep Learning era, the signals brighten */
+.deep-learning {
+    background: radial-gradient(circle at center, rgba(56, 189, 248, 0.15) 0%, transparent 80%);
 }
 
-/* Deep Learning Pulses */
-.neural-network-signals { display: flex; justify-content: center; gap: 30px; margin-top: 40px; }
-.pulse {
-    width: 20px; height: 20px;
-    background: var(--accent);
-    border-radius: 50%;
-    animation: signal-pop 1s infinite alternate;
-}
-
-@keyframes signal-pop {
-    from { transform: scale(1); opacity: 0.4; }
-    to { transform: scale(1.5); opacity: 1; box-shadow: 0 0 20px var(--accent); }
-}
-
-/* Generative Era Gradient */
+/* Generative Era: Multi-color signals */
 .generative h1 {
-    background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+    background: linear-gradient(to right, #38bdf8, #818cf8, #c084fc);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* Progress Bar */
-.progress-container { position: fixed; top: 0; width: 100%; height: 6px; z-index: 1000; }
-.progress-bar { height: 100%; background: var(--accent); width: 0%; }
+/* --- TYPOGRAPHY & ELEMENTS --- */
+
+.era {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 6px 16px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.1; }
+p { font-size: 1.15rem; line-height: 1.6; color: #cbd5e1; margin-bottom: 1rem; }
+
+/* Global Progress Bar */
+.progress-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    z-index: 1000;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, var(--accent), #818cf8);
+    width: 0%;
+    box-shadow: 0 0 10px var(--accent);
+}
