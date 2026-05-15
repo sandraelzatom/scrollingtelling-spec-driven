@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spec-Driven Scrollytelling</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    <main class="scroller">
+        <section class="slide" id="slide-1">
+            <div class="content">
+                <h1>The Spec-Driven Era</h1>
+                <p>Scroll down to see how AI and Specs build the future.</p>
+                <div class="box-animation pulse"></div>
+            </div>
+        </section>
+
+        <section class="slide" id="slide-2">
+            <div class="content">
+                <h2>Phase 1: Defining the Spec</h2>
+                <p>Before writing code, we define the behavior. This limits AI hallucinations.</p>
+                <div class="wireframe-animation">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide" id="slide-3">
+            <div class="content">
+                <h2>Phase 2: CSS Fluidity</h2>
+                <p>Animations should be performant. We use GPU-accelerated transforms.</p>
+                <div class="orbit-container">
+                    <div class="orbit-ball"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide" id="slide-4">
+            <div class="content">
+                <h2>Final: Engineering Mastery</h2>
+                <p>Complex sites built in hours, not weeks.</p>
+                <button class="cta-button">View Repo</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Simple scroll indicator logic
+        window.onscroll = function() { moveProgressBar() };
+        function moveProgressBar() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+    </script>
+</body>
+</html>
