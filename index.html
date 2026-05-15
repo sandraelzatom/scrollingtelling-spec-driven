@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI History: Scrollytelling</title>
+    <title>AI History | A Scrollytelling Journey</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,55 +13,60 @@
     <div class="progress-container"><div class="progress-bar" id="myBar"></div></div>
 
     <main class="scroller">
+        
         <section class="slide">
             <div class="content">
-                <span class="era">1950s – 1960s</span>
+                <span class="era">1950s – 1960s: The First Wave</span>
                 <h1>The Genesis</h1>
-                <p><strong>1950:</strong> Alan Turing proposes the Turing Test.</p>
-                <p><strong>1956:</strong> John McCarthy coins "Artificial Intelligence."</p>
-                <p><strong>1966:</strong> ELIZA, the first chatterbot, is created.</p>
+                <p><strong>1950:</strong> Alan Turing publishes <em>"Computing Machinery and Intelligence,"</em> proposing the <strong>Turing Test</strong>.</p>
+                <p><strong>1956:</strong> The term "Artificial Intelligence" is coined at Dartmouth by <strong>John McCarthy</strong>. Pioneers like Minsky and Newell predict human-like intelligence is imminent.</p>
+                <p><strong>1966:</strong> MIT’s Joseph Weizenbaum creates <strong>ELIZA</strong>, the world's first chatterbot.</p>
             </div>
         </section>
 
-        <section class="slide winter-mode">
+        <section class="slide winter-theme">
             <div class="content">
-                <span class="era">1970s</span>
-                <h1>The AI Winter</h1>
-                <p>Computers are too slow and data is too scarce. Funding is cut and research stalls.</p>
-            </div>
-        </section>
-
-        <section class="slide">
-            <div class="content">
-                <span class="era">1980s</span>
-                <h1>Expert Systems</h1>
-                <p>AI simulates experts in medicine and chemistry. Backpropagation allows neural networks to learn.</p>
+                <span class="era">1970s: The First AI Winter</span>
+                <h1>The Great Stagnation</h1>
+                <p>Early programs struggle with "common sense" and real-world complexity.</p>
+                <p>Funding droughts begin as computers are too slow and data is too scarce to support the grand promises of early researchers.</p>
             </div>
         </section>
 
         <section class="slide">
             <div class="content">
-                <span class="era">1990s – 2000s</span>
+                <span class="era">1980s: Expert Systems</span>
+                <h1>Resurgence</h1>
+                <p>AI finds new life simulating human experts in specific domains like medical diagnoses and chemical analysis.</p>
+                <p>Early neural networks and the <strong>"backpropagation"</strong> algorithm are developed, allowing multi-layer networks to learn.</p>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="content">
+                <span class="era">1990s – 2000s: The Pivot</span>
                 <h1>Symbolic Triumph</h1>
-                <p><strong>1997:</strong> Deep Blue defeats Garry Kasparov.</p>
-                <p><strong>2000s:</strong> The Internet provides "Big Data" for training algorithms.</p>
+                <p><strong>1997:</strong> IBM’s <strong>Deep Blue</strong> defeats world chess champion Garry Kasparov.</p>
+                <p><strong>2000s:</strong> The widespread adoption of the internet creates <strong>"Big Data,"</strong> providing the necessary fuel for machine learning to adapt and train.</p>
             </div>
         </section>
 
-        <section class="slide">
+        <section class="slide boom-theme">
             <div class="content">
-                <span class="era">2010s</span>
-                <h1>The Deep Learning Boom</h1>
-                <p><strong>2012:</strong> AlexNet revolutionizes image recognition.</p>
-                <p><strong>2016:</strong> AlphaGo defeats world champion Lee Sedol.</p>
+                <span class="era">2010s: The Turning Point</span>
+                <h1>Deep Learning Boom</h1>
+                <p><strong>2012:</strong> <strong>AlexNet</strong> revolutionizes image classification, sparking the "Deep Learning" revolution.</p>
+                <p><strong>2016:</strong> Google DeepMind’s <strong>AlphaGo</strong> defeats world champion Lee Sedol at the game of Go.</p>
             </div>
         </section>
 
-        <section class="slide">
+        <section class="slide generative-theme">
             <div class="content">
                 <span class="era">2020s – Present</span>
-                <h1>Generative Era</h1>
-                <p>The rise of LLMs and Transformer architectures. AI moves from analyzing to creating original content.</p>
+                <h1>Generative Explosion</h1>
+                <p>The rise of <strong>Transformer architectures</strong> and Large Language Models (LLMs).</p>
+                <p>AI transitions from analyzing data to <strong>Creating</strong> original text, images, and code.</p>
+                <p>Today's focus: <strong>Agentic AI</strong> and multimodal systems that interpret text, audio, and visual info seamlessly.</p>
             </div>
         </section>
     </main>
@@ -70,7 +75,8 @@
         window.onscroll = function() {
             let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            document.getElementById("myBar").style.width = (winScroll / height) * 100 + "%";
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
         };
     </script>
 </body>
