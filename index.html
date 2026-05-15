@@ -3,64 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spec-Driven Scrollytelling</title>
+    <title>AI History: A Spec-Driven Journey</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="progress-container">
-        <div class="progress-bar" id="myBar"></div>
-    </div>
+    <div class="progress-container"><div class="progress-bar" id="myBar"></div></div>
 
     <main class="scroller">
-        <section class="slide" id="slide-1">
-            <div class="content">
-                <h1>The Spec-Driven Era</h1>
-                <p>Scroll down to see how AI and Specs build the future.</p>
-                <div class="box-animation pulse"></div>
+        <section class="slide genesis">
+            <div class="content fade-in">
+                <span class="era">1950s – 1960s: The First Wave</span>
+                <h1>The Genesis</h1>
+                <p class="detail"><strong>1950:</strong> Alan Turing publishes "Computing Machinery and Intelligence," proposing the <strong>Turing Test</strong>.</p>
+                <p class="detail"><strong>1956:</strong> The term "Artificial Intelligence" is coined at Dartmouth by <strong>John McCarthy</strong>.</p>
+                <p class="detail"><strong>1966:</strong> MIT’s <strong>ELIZA</strong> becomes the first chatterbot.</p>
+                <div class="visual-logic-grid"></div>
             </div>
         </section>
 
-        <section class="slide" id="slide-2">
+        <section class="slide winter">
             <div class="content">
-                <h2>Phase 1: Defining the Spec</h2>
-                <p>Before writing code, we define the behavior. This limits AI hallucinations.</p>
-                <div class="wireframe-animation">
-                    <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
+                <span class="era">1970s: The Great Stagnation</span>
+                <h1>The First AI Winter</h1>
+                <p class="detail">Programs struggled with "common sense" and real-world complexity.</p>
+                <p class="detail">Government funding was slashed as computers were too slow and data was too scarce.</p>
+                <div class="ice-shelf"></div>
+            </div>
+        </section>
+
+        <section class="slide resurgence">
+            <div class="content">
+                <span class="era">1980s: Expert Systems</span>
+                <h1>The Resurgence</h1>
+                <p class="detail">AI simulates human decision-making in specific domains like medicine.</p>
+                <p class="detail"><strong>Backpropagation</strong> is developed, allowing multi-layer neural networks to learn.</p>
+                <div class="expert-nodes">
+                    <div class="node">MD</div><div class="node">CHEM</div>
                 </div>
             </div>
         </section>
 
-        <section class="slide" id="slide-3">
+        <section class="slide symbolic">
             <div class="content">
-                <h2>Phase 2: CSS Fluidity</h2>
-                <p>Animations should be performant. We use GPU-accelerated transforms.</p>
-                <div class="orbit-container">
-                    <div class="orbit-ball"></div>
-                </div>
+                <span class="era">1990s – 2000s: Symbolic Triumph</span>
+                <h1>Deep Blue & Big Data</h1>
+                <p class="detail"><strong>1997:</strong> IBM’s <strong>Deep Blue</strong> defeats Garry Kasparov in Chess.</p>
+                <p class="detail"><strong>2000s:</strong> The Internet creates "Big Data," the fuel for modern Machine Learning.</p>
+                <div class="chess-board"><span></span><span></span><span></span><span></span></div>
             </div>
         </section>
 
-        <section class="slide" id="slide-4">
+        <section class="slide deep-learning">
             <div class="content">
-                <h2>Final: Engineering Mastery</h2>
-                <p>Complex sites built in hours, not weeks.</p>
-                <button class="cta-button">View Repo</button>
+                <span class="era">2010s: The Turning Point</span>
+                <h1>The Deep Learning Boom</h1>
+                <p class="detail"><strong>2012:</strong> AlexNet achieves a massive leap in ImageNet accuracy.</p>
+                <p class="detail"><strong>2016:</strong> AlphaGo defeats world champion Lee Sedol.</p>
+                <div class="neural-pulse"></div>
+            </div>
+        </section>
+
+        <section class="slide generative">
+            <div class="content">
+                <span class="era">2020s – Present</span>
+                <h1>Generative & Agentic AI</h1>
+                <p class="detail">The rise of <strong>Transformer architectures</strong> and LLMs.</p>
+                <p class="detail">Focus shifts to <strong>Agentic AI</strong> and multimodal systems (Text, Audio, Visual).</p>
+                <button class="cta" onclick="window.location.reload()">Replay the History</button>
             </div>
         </section>
     </main>
 
     <script>
-        // Simple scroll indicator logic
-        window.onscroll = function() { moveProgressBar() };
-        function moveProgressBar() {
-            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            var scrolled = (winScroll / height) * 100;
-            document.getElementById("myBar").style.width = scrolled + "%";
-        }
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById("myBar").style.width = (winScroll / height) * 100 + "%";
+        };
     </script>
 </body>
-</html> 
+</html>
